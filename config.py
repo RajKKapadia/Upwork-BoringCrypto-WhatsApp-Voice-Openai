@@ -11,7 +11,7 @@ TWILIO_TOKEN = os.getenv('TWILIO_TOKEN')
 TWILIO_SID = os.getenv('TWILIO_SID')
 FROM = os.getenv('FROM')
 
-REPLT_TYPE = os.getenv('REPLT_TYPE')
+REPLY_TYPE = os.getenv('REPLY_TYPE')
 
 CONNECTION_STRING = os.getenv('CONNECTION_STRING')
 DATABASE_NAME = os.getenv('DATABASE_NAME')

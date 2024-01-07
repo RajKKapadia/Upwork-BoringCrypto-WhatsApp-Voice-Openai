@@ -61,7 +61,7 @@ def twilio():
 
         print(response)
 
-        if config.REPLT_TYPE == 'TEXT':
+        if config.REPLY_TYPE == 'TEXT':
             send_message(sender_id, response)
         else:
             '''TODO
