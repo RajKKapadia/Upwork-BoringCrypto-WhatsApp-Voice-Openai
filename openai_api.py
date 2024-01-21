@@ -37,7 +37,6 @@ def transcript_audio(media_url: str) -> dict[str, str]:
         os.unlink(mp3_file_path)
         transcript = openai.audio.transcriptions.create(
             model='whisper-1', file=audio_file, response_format='text')
-
         return {
             'status': 1,
             'transcript': transcript
