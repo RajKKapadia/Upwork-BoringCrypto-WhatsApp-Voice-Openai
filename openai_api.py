@@ -3,6 +3,7 @@ import uuid
 
 import openai
 import requests
+from requests.auth import HTTPBasicAuth
 import soundfile as sf
 
 import config
@@ -26,7 +27,8 @@ def chat_completion(messages: list[dict]) -> str:
 def transcript_audio(media_url: str) -> dict[str, str]:
     try:
         ogg_file_path = f'{config.OUTPUT_DIR}/{uuid.uuid1()}.ogg'
-        data = requests.get(media_url)
+        auth = HTTPBasicAuth(config.TWILIO_SID, config.TWILIO_TOKEN)
+        data = requests.get(url=media_url, auth=auth)
         with open(ogg_file_path, 'wb') as file:
             file.write(data.content)
         audio_data, sample_rate = sf.read(ogg_file_path)
