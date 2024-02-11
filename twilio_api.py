@@ -17,11 +17,12 @@ def send_message(to: str, message: str) -> None:
         - None
     '''
 
-    _ = client.messages.create(
+    response = client.messages.create(
         from_=config.FROM,
         body=message,
         to=to
     )
+    print(response.sid)
 
 
 def send_media_message(to: str, media_url: str) -> None:
@@ -34,8 +35,11 @@ def send_media_message(to: str, media_url: str) -> None:
         - None
     '''
 
-    _ = client.messages.create(
+    response = client.messages.create(
         from_=config.FROM,
         media_url=[media_url],
         to=to
     )
+    print(response.sid)
+
+print(send_media_message('whatsapp:+919558515995', 'https://images.unsplash.com/photo-1545093149-618ce3bcf49d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'))

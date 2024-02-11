@@ -38,6 +38,7 @@ def twilio():
         response_audio_file_name = ''
 
         if 'MediaUrl0' in data.keys():
+            print(data['MediaUrl0'])
             transcript = transcript_audio(data['MediaUrl0'])
             if transcript['status'] == 1:
                 query = transcript['transcript'].strip()
@@ -69,10 +70,11 @@ def twilio():
             [ ] save the audio on mongodb
             [ ] send the media url 
             '''
+            base_url = request.base_url.rsplit('/', maxsplit=1)[0]
             ogg_file_path = generate_audio_and_get_file_path(response)
             file_name = save_audio(ogg_file_path)
             response_audio_file_name += file_name
-            media_url = f'{config.BASE_URL}/get/audio/{file_name}'
+            media_url = f'{base_url}/get/audio/{file_name}'
             send_media_message(sender_id, media_url)
 
         if user:
