@@ -17,15 +17,20 @@ CONNECTION_STRING = os.getenv('CONNECTION_STRING')
 DATABASE_NAME = os.getenv('DATABASE_NAME')
 COLLECTION_NAME = os.getenv('COLLECTION_NAME')
 
-ELEVENLABS_API_KEY = os.getenv('ELEVENLABS_API_KEY')
-ELEVENLABS_VOICE_NAME = os.getenv('ELEVENLABS_VOICE_NAME')
+CREDENTIALS = os.getenv('CREDENTIALS')
+GCP_CLOUD_STORAGE_BUCKET_NAME = os.getenv('GCP_CLOUD_STORAGE_BUCKET_NAME')
 
 ERROR_MESSAGE = 'We are facing an issue, please try after sometimes.'
+AUDIO_FILE_FORMAT = 'opus'
 
 OUTPUT_DIR = os.path.join(
     tempfile.gettempdir(),
-    'boringcrypto',
-    'audio'
+    'boringcrypto'
 )
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+CREDENTIALS_FILE_PATH = os.path.join(
+    OUTPUT_DIR,
+    'credentials.json'
+)
